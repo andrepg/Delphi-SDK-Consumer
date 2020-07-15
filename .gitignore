@@ -1,0 +1,11 @@
+# Ignoring Boss .lock file and modules
+boss-lock.json
+modules/
+
+# Ignoring Delphi local files
+*.local
+*.identcache
+
+# Ignore compiled and __history files
+Win32/
+__history/

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3E565C96-A664-43EE-9E43-A497E45B0649}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PrototipoRunner.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Principal.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PrototipoRunner">
+        <MSBuild Projects="PrototipoRunner.dproj"/>
+    </Target>
+    <Target Name="PrototipoRunner:Clean">
+        <MSBuild Projects="PrototipoRunner.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrototipoRunner:Make">
+        <MSBuild Projects="PrototipoRunner.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Principal">
+        <MSBuild Projects="Principal.dproj"/>
+    </Target>
+    <Target Name="Principal:Clean">
+        <MSBuild Projects="Principal.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Principal:Make">
+        <MSBuild Projects="Principal.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PrototipoRunner;Principal"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PrototipoRunner:Clean;Principal:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PrototipoRunner:Make;Principal:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
